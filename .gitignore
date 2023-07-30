@@ -216,6 +216,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+build/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -572,3 +573,5 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,clion+all,macos,visualstudiocode,windows,linux
+
+!External/esUtils/Source/Win32/

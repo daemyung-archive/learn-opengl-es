@@ -1,2 +1,2 @@
-add_executable( Hello_Triangle Hello_Triangle.c )
-target_link_libraries( Hello_Triangle Common )
+add_executable( Hello_vane Hello_vane.c )
+target_link_libraries( Hello_vane Common )

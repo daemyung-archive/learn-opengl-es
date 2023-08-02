@@ -7,4 +7,8 @@ repos:
       - id: clang-format
         args: [ --style=Google ]
       - id: cppcheck
+<<<<<<< HEAD
         args: ['--suppress=missingInclude', '--suppress=missingIncludeSystem', '--suppress=unusedFunction']
+=======
+        args: ['--suppress=missingInclude','--suppress=missingIncludeSystem', '--suppress=unusedFunction']
+>>>>>>> c6740a3cadf208ebebae8ab07838619b2643662f

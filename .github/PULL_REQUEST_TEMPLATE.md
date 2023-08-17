@@ -8,6 +8,12 @@ Resolves #
 
 Add any other context or screenshots about the pull request here.
 
+## 🖥️ System
+- OS:
+- GPU:
+- OpenGL:
+- EGL:
+
 ## ✅ Checklist
 
 - [ ] Code follows the project's coding conventions and style.

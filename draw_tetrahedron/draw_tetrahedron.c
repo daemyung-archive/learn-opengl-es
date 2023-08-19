@@ -120,7 +120,7 @@ int Init(const ESContext *esContext) {
       "out vec4 fragColor;                          \n"
       "void main()                                  \n"
       "{                                            \n"
-      "fragColor=vec4(1.0, 1.0, 1.0, 1.0);          \n"
+      "   fragColor = vec4(1.0, 1.0, 1.0, 1.0);     \n"
       "}                                            \n";
 
   GLuint vertexShader;

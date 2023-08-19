@@ -120,7 +120,7 @@ int Init(const ESContext *esContext) {
       "out vec4 fragColor;                          \n"
       "void main()                                  \n"
       "{                                            \n"
-      "fragColor=vec4(1.0, 1.0, 1.0, 1.0);\n"
+      "fragColor=vec4(1.0, 1.0, 1.0, 1.0);          \n"
       "}                                            \n";
 
   GLuint vertexShader;
@@ -210,7 +210,7 @@ void Draw(ESContext *esContext) {
 
   glEnableVertexAttribArray(0);
 
-  // glDrawElements(GL_TRIANGLES,12, GL_UNSIGNED_SHORT, index);
+  
   // 정점들을 선으로 연결
   glDrawElements(GL_LINE_STRIP, 12, GL_UNSIGNED_SHORT, index);
 };
@@ -224,7 +224,7 @@ void Shutdown(ESContext *esContext) {
 int esMain(ESContext *esContext) {
   esContext->userData = malloc(sizeof(UserData));
 
-  esCreateWindow(esContext, "Hello Triangle", 320, 240, ES_WINDOW_RGB);
+  esCreateWindow(esContext, "Hello tetrahedron", 320, 240, ES_WINDOW_RGB);
 
   if (!Init(esContext)) {
     return GL_FALSE;

@@ -2,13 +2,13 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 # 프로젝트 이름 지정
-project(OpenGLES)
+project(CH03ex)
 
 # 사용할 C++ 버전을 17으로 설정
 set(CMAKE_CXX_STANDARD 17)
 
 # 타겟 프로그램 정의
-add_executable(OpenGLES
+add_executable(CH03ex
         initEGL/initEGL.c
         )
 
@@ -19,14 +19,14 @@ find_path(EGL_REGISTRY_INCLUDE_DIRS "EGL/egl.h")
 find_path(GLES_REGISTRY_INCLUDE_DIRS "GLES3/gl3.h")
 
 # 타겟을 컴파일할 때 사용할 인클루드 디렉토리를 지정
-target_include_directories(OpenGLES
+target_include_directories(CH03ex
         PRIVATE
         ${EGL_REGISTRY_INCLUDE_DIRS}
         ${GLES_REGISTRY_INCLUDE_DIRS}
         )
 
 # 타겟을 컴파일할 때 사용할 컴파일 디파인을 지정
-target_compile_definitions(OpenGLES
+target_compile_definitions(CH03ex
         PRIVATE
         GLFW_INCLUDE_ES3
         GLFW_EXPOSE_NATIVE_COCOA
@@ -39,7 +39,7 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(unofficial-angle REQUIRED CONFIG)
 
 # 타겟을 링킹할 때 필요한 타겟이나 라이브러리를 지정
-target_link_libraries(OpenGLES
+target_link_libraries(CH03ex
         PRIVATE
         glfw
         unofficial::angle::libEGL

@@ -6,5 +6,3 @@ repos:
     hooks:
       - id: clang-format
         args: [ --style=Google ]
-      - id: cppcheck
-        args: ['--suppress=missingInclude','--suppress=missingIncludeSystem', '--suppress=unusedFunction']

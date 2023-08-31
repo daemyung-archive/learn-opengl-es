@@ -210,7 +210,6 @@ void Draw(ESContext *esContext) {
 
   glEnableVertexAttribArray(0);
 
-  
   // 정점들을 선으로 연결
   glDrawElements(GL_LINE_STRIP, 12, GL_UNSIGNED_SHORT, index);
 };

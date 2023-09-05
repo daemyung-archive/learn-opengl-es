@@ -1,0 +1,10 @@
+{
+  "name": "webgl-loader",
+  "version": "1.0.0",
+  "description": "A simple local web server for WebGL development",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}

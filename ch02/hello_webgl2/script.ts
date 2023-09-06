@@ -82,12 +82,12 @@ async function main() {
     }
 
 
-    let program: WebGLProgram | null = createProgram(gl, vertexShader, fragmentShader);
-    let positionAttributeLocation: number = gl.getAttribLocation(program, "a_Position");
-    let positionBuffer: WebGLBuffer = gl.createBuffer();
+    const program: WebGLProgram | null = createProgram(gl, vertexShader, fragmentShader);
+    const positionAttributeLocation: number = gl.getAttribLocation(program, "a_Position");
+    const positionBuffer: WebGLBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
-    let positions: number[] = [
+    const positions: number[] = [
         0.0,  0.5, 0.0,
         -0.5, -0.5, 0.0,
         0.5, -0.5, 0.0

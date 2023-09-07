@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ch06 WebGL2 예제</title>
+</head>
+<body>
+<h1>Ch06 예제</h1>
+<h3>Vertex Attributes</h3>
+<p>모든 OpenGL ES 3.0 의 구현채는 적어도 16개의 vertex attributes 를 지원합니다.</p>
+<div style="padding: 10px 10px 20px 20px">
+<h5>OpenGL ES 3.0</h5>
+    <div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">GLint&nbsp;maxVertexAttribs;&nbsp;<span style="color:#999999">//&nbsp;반드시&nbsp;16보다는&nbsp;커야합니다.</span></div><div style="background-color:#303030; padding:0 6px; white-space:pre; line-height:130%">glGetIntegerv(GL_MAX_VERTEX_ATTRIBS,&nbsp;<span style="color:#aaffaa"></span><span style="color:#ff3399">&amp;</span>maxVertexAttribs);&nbsp;</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+<h5>webGl2</h5>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #4f4f4f"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#aaa;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">const</span>&nbsp;gl:WebGLRenderingContext&nbsp;<span style="color:#aaffaa"></span><span style="color:#ff3399">=</span>&nbsp;getGL2(document.createElement(<span style="color:#ffd500">"canvas"</span>));</div><div style="background-color:#303030; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">const</span>&nbsp;maxVertexAttribs:number&nbsp;<span style="color:#aaffaa"></span><span style="color:#ff3399">=</span>&nbsp;gl.getParameter(gl.MAX_VERTEX_ATTRIBS);</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+</div>
+<button onclick="checkMaxVertexAttribs()">최대 vertex attributes 개수 확인하기</button>
+<h3>Const Vertex Attribute</h3>
+<p>glVertexAttrib4f 를 사용해 삼각형의 색상을 결정하는 예제</p>
+<div style="padding: 10px 10px 20px 20px; display: flex; flex-direction: column;">
+    <canvas id="constVertexAttribute"></canvas>
+    <label style="padding: 10px"> Color Picker
+        <input id="constVertexAttributesPicker" type="color" value="#32a852" onchange="resetColor()">
+    </label>
+</div>
+</body>
+<script src="app.js"></script>
+</html>

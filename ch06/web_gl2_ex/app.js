@@ -47,6 +47,12 @@ function getProgram(gl, vertexShader, fragmentShader) {
     console.log(gl.getProgramInfoLog(program));
     gl.deleteProgram(program);
 }
+function glColorBufferInit(gl, backgroundColor) {
+    const { r, g, b } = hexToRgb(backgroundColor);
+    gl.clearColor(r, g, b, 1);
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+}
 function checkMaxVertexAttribs() {
     const gl = getGL2(document.createElement("canvas"));
     const maxVertexAttribs = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
@@ -64,27 +70,31 @@ function hexToRgb(hex) {
     return { r, g, b };
 }
 function constVertexAttributeEx() {
+    // webGL2 객체 생성
     const gl = getGL2(document.querySelector("#constVertexAttribute"));
+    // vertex, fragment Shader 생성
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
     const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    // programingObj 생성
     const program = getProgram(gl, vertexShader, fragmentShader);
+    // VAO 생성
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    // 정점 위치정보 생성
     const vertexPos = [
         0, 0.5, 0,
         -0.5, -0.5, 0,
         0.5, -0.5, 0
     ];
+    // VAO 에 정보 입력
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexPos), gl.STATIC_DRAW);
-    gl.clearColor(0, 0, 0, 1);
-    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    // Color Buffer 초기화
+    glColorBufferInit(gl, "#000000");
     gl.useProgram(program);
     gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(0);
-    console.log('color: ', color);
-    const rgba = hexToRgb(color);
-    gl.vertexAttrib4f(1, rgba.r, rgba.g, rgba.b, 1);
+    const { r, g, b } = hexToRgb(color);
+    gl.vertexAttrib4f(1, r, g, b, 1);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 }
 function main() {

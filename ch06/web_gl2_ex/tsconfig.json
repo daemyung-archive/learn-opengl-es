@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2015", // 또는 더 높은 버전으로 설정할 수 있음
-    "module": "commonjs", // 또는 더 높은 버전으로 설정할 수 있음
+    "target": "es2015",
+    // 또는 더 높은 버전으로 설정할 수 있음
+    "moduleResolution": "Node",
     "lib": [
       "ES5",
       "ES2016",
       "DOM",
       "ScriptHost"
-    ],
+    ]
     // 기타 설정...
   }
 }

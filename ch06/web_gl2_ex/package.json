@@ -1,0 +1,10 @@
+{
+  "name": "web_gl2_ex",
+  "version": "1.0.0",
+  "dependencies": {
+    "gl-matrix": "^3.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0"
+  }
+}

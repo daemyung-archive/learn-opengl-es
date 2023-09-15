@@ -1,4 +1,37 @@
-const vertexShaderSource = `#version 300 es
+import { getGL2, createShader, getProgram } from "./until.js";
+// function getGL2(canvas: HTMLCanvasElement) {
+//     const gl = canvas.getContext("webgl2");
+//     if (!gl) {
+//         throw new Error("Unable to initialize WebGL2");
+//     }
+//     return gl;
+// }
+// function createShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
+//     const shader: WebGLShader = gl.createShader(type);
+//     gl.shaderSource(shader, source);
+//     gl.compileShader(shader);
+//
+//     if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+//         return shader;
+//     }
+//
+//     console.log(gl.getShaderInfoLog(shader));
+//     gl.deleteShader(shader);
+// }
+// function getProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader): WebGLProgram | null {
+//     const program: WebGLProgram = gl.createProgram();
+//     gl.attachShader(program, vertexShader);
+//     gl.attachShader(program, fragmentShader);
+//     gl.linkProgram(program);
+//
+//     if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+//         return program;
+//     }
+//
+//     console.log(gl.getProgramInfoLog(program));
+//     gl.deleteProgram(program);
+// }
+const vertexAttribExVertexShaderSource = `#version 300 es
     layout(location=0) in vec4 a_position;
     layout(location=1) in vec4 a_color;
     out vec4 v_color;
@@ -6,7 +39,7 @@ const vertexShaderSource = `#version 300 es
         gl_Position = a_position;
         v_color = a_color;
     }`;
-const fragmentShaderSource = `#version 300 es
+const vertexAttribExFragmentShaderSource = `#version 300 es
     precision mediump float;
     in vec4 v_color;
     out vec4 o_fragColor;
@@ -14,38 +47,10 @@ const fragmentShaderSource = `#version 300 es
         o_fragColor = v_color;
     }`;
 let color = "#32a852";
-function resetColor() {
+export function resetColor() {
     const colorInput = document.querySelector("#constVertexAttributesPicker");
     color = colorInput.value;
     constVertexAttributeEx();
-}
-function getGL2(canvas) {
-    const gl = canvas.getContext("webgl2");
-    if (!gl) {
-        throw new Error("Unable to initialize WebGL2");
-    }
-    return gl;
-}
-function createShader(gl, type, source) {
-    const shader = gl.createShader(type);
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-    if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        return shader;
-    }
-    console.log(gl.getShaderInfoLog(shader));
-    gl.deleteShader(shader);
-}
-function getProgram(gl, vertexShader, fragmentShader) {
-    const program = gl.createProgram();
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        return program;
-    }
-    console.log(gl.getProgramInfoLog(program));
-    gl.deleteProgram(program);
 }
 function glColorBufferInit(gl, backgroundColor) {
     const { r, g, b } = hexToRgb(backgroundColor);
@@ -53,7 +58,7 @@ function glColorBufferInit(gl, backgroundColor) {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT);
 }
-function checkMaxVertexAttribs() {
+export function checkMaxVertexAttribs() {
     const gl = getGL2(document.createElement("canvas"));
     const maxVertexAttribs = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
     alert(`max vertex attribs: ${maxVertexAttribs}`);
@@ -73,8 +78,8 @@ function constVertexAttributeEx() {
     // webGL2 객체 생성
     const gl = getGL2(document.querySelector("#constVertexAttribute"));
     // vertex, fragment Shader 생성
-    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexAttribExVertexShaderSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, vertexAttribExFragmentShaderSource);
     // programingObj 생성
     const program = getProgram(gl, vertexShader, fragmentShader);
     // VAO 생성
@@ -101,3 +106,7 @@ function main() {
     constVertexAttributeEx();
 }
 main();
+// @ts-ignore
+window.resetColor = resetColor;
+// @ts-ignore
+window.checkMaxVertexAttribs = checkMaxVertexAttribs;
